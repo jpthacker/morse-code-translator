@@ -1,6 +1,12 @@
 // TRANSLATABLE LIBRARY CLASS
 // Should be able to take two library parameters and translater one into the other
 // Should be able to take any libraries of equivalents
+// class Translator {
+//   constructor(alphabetArr) {
+//     this.alphabetArr = alphabetArr;
+//   }
+
+// }
 
 // MORSE CODE TO ENGLISH CLASS
 // Should be able to handle the two libraries required to translate from MC to Eng
