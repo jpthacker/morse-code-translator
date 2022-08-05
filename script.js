@@ -12,3 +12,6 @@
 
 // MORSE CODE TRANSLATOR OBJECTS
 // Objects should be able to handle the translations either way (two objects - one for each direction of translation)
+
+// DOM INTERATION
+// Should be able to determine the content of two forms using event listeners and the two objects' methods
