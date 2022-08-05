@@ -1,0 +1,23 @@
+{
+  "name": "morse-code-translator",
+  "version": "1.0.0",
+  "description": "A .- B -... C -.-. D -.. E . F ..-. G --. H .... I .. J .--- K -.- L .-.. M -- N -. O --- P .--. Q --.- R .-. S ... T - U ..- V ...- W .-- X -..- Y -.-- Z --..",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpthacker/morse-code-translator.git"
+  },
+  "keywords": [],
+  "author": "Jack Thacker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpthacker/morse-code-translator/issues"
+  },
+  "homepage": "https://github.com/jpthacker/morse-code-translator#readme",
+  "devDependencies": {
+    "sass": "^1.54.3"
+  }
+}
