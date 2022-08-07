@@ -1,4 +1,4 @@
-let morseCodeAlphabet = [
+export const morseCodeAlphabet = [
   { A: ".-" },
   { B: "-..." },
   { C: "-.-." },
@@ -57,16 +57,16 @@ let morseCodeAlphabet = [
   { " ": " " },
 ];
 
-// const mcStr =
+// const mixedAlphabetStr =
 //   "A .- B -... C -.-. D -.. E . F ..-. G --. H .... I .. J .--- K -.- L .-.. M -- N -. O --- P .--. Q --.- R .-. S ... T - U ..- V ...- W .-- X -..- Y -.-- Z --.. 0 ----- 1 .---- 2 ..--- 3 ...-- 4 ....- 5 ..... 6 -.... 7 --... 8 ---.. 9 ----. . .-.-.- , --..-- ? ..--.. ' .----. ! -.-.-- / -..-. ( -.--. ) -.--.- & .-... : ---... ; -.-.-. = -...- + .-.-. - -....- _ ..--.- $ ...-..- @ .--.-. ¿ ..-.- ¡ --...-";
 
-// let mcArr = [];
+// let mixedAlphabetArr = [];
 // const seperateString = (string) => {
-//   mcArr = string.split(" ");
+//   mixedAlphabetArr = string.split(" ");
 // };
 
-// seperateString(mcStr);
-// console.table(mcArr);
+// seperateString(mixedAlphabetStr);
+// console.table(mixedAlphabetArr);
 
 // const objectifyArray = (array) => {
 //   for (let i = 0; i < array.length; i++) {
@@ -81,6 +81,6 @@ let morseCodeAlphabet = [
 //   morseCodeAlphabet.push(morseCodeObject);
 // };
 
-// objectifyArray(mcArr);
+// objectifyArray(mixedAlphabetArr);
 
 // console.log(morseCodeAlphabet);
