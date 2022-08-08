@@ -1,23 +1,48 @@
-import * as classes from "./main";
-classes.Translator;
-classes.englishToMorseCodeTranslator;
+import { morseCodeAlphabet } from "./alphabet";
 
-describe("Translator tests", () => {
+import * as classes from "./main";
+classes.MorseCodeTranslator;
+
+describe("English to morse code translator tests", () => {
   describe("Default translator", () => {
-    const alphabetArr = [{ A: 1 }, { b: 2 }, { c: "3" }, { 6: 4 }, { ".": 0 }];
-    // const engAlphabet = ["a", "b", "c", "d", "e", "1", " "];
-    // const morseCodeAlphabet = ["1", "2", 3, "4", "5", "6", " "];
-    const sampleTranslator = new classes.Translator(alphabetArr);
-    test("Should be able to take an equivalent alphabet object and translate the key into the value", () => {
-      expect(sampleTranslator.translateCharacter("abc")).toBe("123");
+    const sampleTranslator = new classes.MorseCodeTranslator(morseCodeAlphabet);
+    test("Should be able to translate english to morse code", () => {
+      expect(sampleTranslator.translateCharacter("working")).toBe(
+        ".-- --- .-. -.- .. -. --."
+      );
+      expect(sampleTranslator.translateCharacter("Hello")).toBe(
+        ".... . .-.. .-.. ---"
+      );
     });
 
     test("Should be able to handle lower and upper case entries", () => {
-      expect(sampleTranslator.translateCharacter("B")).toBe("2");
+      expect(sampleTranslator.translateCharacter("JackThacker")).toBe(
+        ".--- .- -.-. -.- - .... .- -.-. -.- . .-."
+      );
+      expect(sampleTranslator.translateCharacter("WORKING")).toBe(
+        ".-- --- .-. -.- .. -. --."
+      );
+    });
+
+    test("Should be able to handle punctuation", () => {
+      expect(sampleTranslator.translateCharacter(":! ")).toBe(
+        "---... -.-.-- /"
+      );
     });
 
     test("Should return a string", () => {
-      expect(sampleTranslator.translateCharacter("c")).toBe("3");
+      expect(sampleTranslator.translateCharacter("123")).toBe(
+        ".---- ..--- ...--"
+      );
+    });
+
+    test("Should format the translation so that it is easy to understand", () => {
+      expect(sampleTranslator.translateCharacter("This is working")).toBe(
+        "- .... .. ... / .. ... / .-- --- .-. -.- .. -. --."
+      );
+      expect(sampleTranslator.translateCharacter("as easy as 123!")).toBe(
+        ".- ... / . .- ... -.-- / .- ... / .---- ..--- ...-- -.-.--"
+      );
     });
 
     test("Should be able to handle non string entries", () => {
@@ -26,17 +51,4 @@ describe("Translator tests", () => {
       );
     });
   });
-
-  // describe("English to Morse Code Translator", () => {
-  //   const engToMC = new classes.englishToMorseCodeTranslator(
-  //     ["A", "B", "C", "D", "E", "F", " "],
-  //     [".-", "-...", "-.-.", "-..", ".", "..-.", " "]
-  //   );
-  //   test("Should be able to handle the two libraries required to translate from Eng to MC", () => {
-  //     expect(engToMC.translateMorseCode("a")).toBe(".- ");
-  //     expect(engToMC.translateMorseCode("f")).toBe("..-. ");
-  //   });
-
-  //   test("Should format the translation so that it is easy to understand", () => {});
-  // });
 });

@@ -150,6 +150,7 @@ export const englishAlphabet = [
   "¡",
   " ",
 ];
+
 export const morseCodeAlphabetArr = [
   ".-",
   "-...",
