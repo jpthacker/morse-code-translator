@@ -8,22 +8,26 @@ export class Translator {
     this.alphabetArr = alphabetArr;
   }
 
-  translateFirstCharacter(character) {
-    this.alphabetArr.forEach((equivalent) => {
-      let output = "test";
-      for (let key in equivalent) {
-        if (key === character.toUpperCase()) {
-          output = equivalent[key];
+  translateCharacter(singleCharacterStr) {
+    if (typeof singleCharacterStr === "string") {
+      let output;
+      this.alphabetArr.forEach((equivalent) => {
+        for (let key in equivalent) {
+          if (key.toUpperCase() === singleCharacterStr.toUpperCase()) {
+            output = equivalent[key].toString();
+          }
         }
-      }
+      });
       return output;
-    });
+    } else {
+      return "You must enter a string";
+    }
   }
 }
 
 const test = new Translator(morseCodeAlphabet);
 
-console.log(test.translateFirstCharacter("a"));
+console.log(test.translateCharacter("a"));
 
 // MORSE CODE TO ENGLISH CLASS
 // Should be able to handle the two libraries required to translate from MC to Eng
