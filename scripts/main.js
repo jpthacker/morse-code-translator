@@ -1,27 +1,29 @@
 import { morseCodeAlphabet } from "./alphabet.js";
 
-// TRANSLATABLE LIBRARY CLASS
+// TRANSLATOR CLASS
 // Should be able to take two library parameters and translater one into the other
 // Should be able to take any libraries of equivalents
-class Translator {
+export class Translator {
   constructor(alphabetArr) {
     this.alphabetArr = alphabetArr;
   }
 
   translateFirstCharacter(character) {
     this.alphabetArr.forEach((equivalent) => {
+      let output = "test";
       for (let key in equivalent) {
-        if (key === character) {
-          console.log(equivalent[key]);
+        if (key === character.toUpperCase()) {
+          output = equivalent[key];
         }
       }
+      return output;
     });
   }
 }
 
 const test = new Translator(morseCodeAlphabet);
 
-test.translateFirstCharacter(" ");
+console.log(test.translateFirstCharacter("a"));
 
 // MORSE CODE TO ENGLISH CLASS
 // Should be able to handle the two libraries required to translate from MC to Eng
