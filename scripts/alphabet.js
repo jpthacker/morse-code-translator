@@ -234,5 +234,5 @@ export const morseCodeAlphabet = [
 
 // splitAlphabetArray(mixedAlphabetArr);
 
-// console.log(morseCodeAlphabet);
-// console.log(englishAlphabet);
+// console.table(morseCodeAlphabet);
+// console.table(englishAlphabet);

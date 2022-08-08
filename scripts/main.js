@@ -42,7 +42,7 @@ export class Translator {
 
   translateCharacter(singleCharacterStr) {
     if (
-      typeof singleCharacterStr === "string" &&
+      typeof singleCharacterStr === "string" ||
       singleCharacterStr.length === 1
     ) {
       let output;
@@ -54,9 +54,9 @@ export class Translator {
           output = this.secondAlphabetArr[i];
         }
       }
-      return output;
+      return output.toString();
     } else {
-      console.log("You must enter a single character as a string");
+      return "You must enter a single character as a string";
     }
   }
 }
@@ -66,7 +66,7 @@ const test = new Translator(
   alphabet.morseCodeAlphabet
 );
 
-console.log(test.translateCharacter(" "));
+console.log(test.translateCharacter("a"));
 
 // MORSE CODE TO ENGLISH CLASS
 // Should be able to handle the two libraries required to translate from MC to Eng
