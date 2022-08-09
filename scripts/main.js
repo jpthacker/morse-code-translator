@@ -6,34 +6,46 @@ alphabet.morseCodeAlphabetArr;
 // ENGLISH TO MORSE CODE TRANSLATOR CLASS
 
 // OBJECT-BASED VERSION
-export class MorseCodeTranslator {
+export class EngToMorseCodeTranslator {
   constructor(alphabetArr) {
     this.alphabetArr = alphabetArr;
   }
 
-  translateCharacter(str) {
-    if (typeof str === "string") {
-      let outputArr = [];
-      const strArr = str.split("");
-      strArr.forEach((character) => {
-        this.alphabetArr.forEach((equivalent) => {
-          for (let key in equivalent) {
-            if (key.toUpperCase() === character.toUpperCase()) {
-              outputArr.push(equivalent[key].toString());
-            }
+  translateEngToMorseCode(str) {
+    // if (typeof str === "string") {
+    let outputArr = [];
+    const strArr = String(str).split("");
+    strArr.forEach((character) => {
+      this.alphabetArr.forEach((equivalent) => {
+        for (let key in equivalent) {
+          if (key.toUpperCase() === character.toUpperCase()) {
+            outputArr.push(equivalent[key].toString());
           }
-        });
+        }
       });
-      return outputArr.join(" ");
-    } else {
-      return "You must enter a string";
-    }
+    });
+    return outputArr.join(" ");
+    // } else {
+    //   return "You must enter a string";
+    // }
   }
 }
 
-const test = new MorseCodeTranslator(alphabet.morseCodeAlphabet);
+const test = new EngToMorseCodeTranslator(alphabet.morseCodeAlphabet);
 
-console.log(test.translateCharacter(":! "));
+console.log(test.translateEngToMorseCode(":! "));
+
+// MORSE CODE TO ENGLISH TRANSLATOR CLASS
+
+// OBJECT-BASED VERSION
+
+export class MorseCodeToEngTranslator extends EngToMorseCodeTranslator {
+  constructor(alphabetArr) {
+    super(alphabetArr);
+  }
+
+  translateMorseCodeToEng() {}
+}
 
 // ARRAYS-BASED VERSION
 // export class Translator {
