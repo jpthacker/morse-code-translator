@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.title {
+  margin: 5vh auto;
+  text-align: center;
+}
+
+.translator {
+  margin: 10vh auto;
+  width: 80vw;
+  height: 50vh;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+[class*="__text-title"] {
+  text-align: center;
+}

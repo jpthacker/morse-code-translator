@@ -4,9 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
     <title>Morse Code Translator</title>
   </head>
   <body>
+    <h1 class="title">Morse Code Translator</h1>
+    <div class="translator">
+      <div class="translator__text--eng">
+        <h2 class="translator__text-title--eng">English</h2>
+        <textarea class="translator__input--eng" cols="50" rows="20"></textarea>
+      </div>
+      <div class="translator__text--morse-code">
+        <h2 class="translator__text-title--morse-code">Morse Code</h2>
+        <textarea
+          class="translator__input--morse-code"
+          cols="50"
+          rows="20"
+        ></textarea>
+      </div>
+    </div>
     <script type="module" src="./scripts/main.js"></script>
   </body>
 </html>
