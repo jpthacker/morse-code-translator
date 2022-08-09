@@ -51,11 +51,12 @@ export class MorseCodeToEngTranslator extends EngToMorseCodeTranslator {
 
   translateMorseCodeToEng(str) {
     const output = super.translateEngToMorseCode(str);
-    if (output === "") {
-      return "#";
-    } else {
-      return output;
-    }
+    // if (output === "") {
+    //   return "#";
+    // } else {
+    //   return output;
+    // }
+    return output;
   }
 }
 
@@ -70,3 +71,20 @@ const MCToEngTranslator = new MorseCodeToEngTranslator(
 
 // DOM INTERATION
 // Should be able to determine the content of two forms using event listeners and the two objects' methods
+const textBoxEnglish = document.querySelector(".translator__input--eng");
+const textBoxMorseCode = document.querySelector(
+  ".translator__input--morse-code"
+);
+
+textBoxEnglish.addEventListener("keyup", (event) => {
+  textBoxMorseCode.innerText = engToMCTranslator.translateEngToMorseCode(
+    event.target.value
+  );
+});
+
+textBoxMorseCode.addEventListener("keyup", (event) => {
+  MCToEngTranslator.swapAlphabet();
+  textBoxEnglish.innerText += MCToEngTranslator.translateMorseCodeToEng(
+    event.target.value
+  );
+});
