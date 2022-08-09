@@ -3,55 +3,77 @@ import { morseCodeAlphabet } from "./alphabet";
 import * as classes from "./main";
 classes.EngToMorseCodeTranslator;
 
-describe("English to morse code translator tests", () => {
-  describe("Default translator", () => {
-    const sampleTranslator = new classes.EngToMorseCodeTranslator(
+describe("Morse code translator tests", () => {
+  describe("English to morse code translator", () => {
+    const engToMCTranslator = new classes.EngToMorseCodeTranslator(
       morseCodeAlphabet
     );
     test("Should be able to translate english to morse code", () => {
-      expect(sampleTranslator.translateEngToMorseCode("working")).toBe(
+      expect(engToMCTranslator.translateEngToMorseCode("working")).toBe(
         ".-- --- .-. -.- .. -. --."
       );
-      expect(sampleTranslator.translateEngToMorseCode("Hello")).toBe(
+      expect(engToMCTranslator.translateEngToMorseCode("Hello")).toBe(
         ".... . .-.. .-.. ---"
       );
     });
 
     test("Should be able to handle lower and upper case entries", () => {
-      expect(sampleTranslator.translateEngToMorseCode("JackThacker")).toBe(
+      expect(engToMCTranslator.translateEngToMorseCode("JackThacker")).toBe(
         ".--- .- -.-. -.- - .... .- -.-. -.- . .-."
       );
-      expect(sampleTranslator.translateEngToMorseCode("WORKING")).toBe(
+      expect(engToMCTranslator.translateEngToMorseCode("WORKING")).toBe(
         ".-- --- .-. -.- .. -. --."
       );
     });
 
     test("Should be able to handle punctuation", () => {
-      expect(sampleTranslator.translateEngToMorseCode(":! ")).toBe(
+      expect(engToMCTranslator.translateEngToMorseCode(":! ")).toBe(
         "---... -.-.-- /"
       );
     });
 
     test("Should return a string", () => {
-      expect(sampleTranslator.translateEngToMorseCode("123")).toBe(
+      expect(engToMCTranslator.translateEngToMorseCode("123")).toBe(
         ".---- ..--- ...--"
       );
     });
 
     test("Should format the translation so that it is easy to understand", () => {
-      expect(sampleTranslator.translateEngToMorseCode("This is working")).toBe(
+      expect(engToMCTranslator.translateEngToMorseCode("This is working")).toBe(
         "- .... .. ... / .. ... / .-- --- .-. -.- .. -. --."
       );
-      expect(sampleTranslator.translateEngToMorseCode("as easy as 123!")).toBe(
+      expect(engToMCTranslator.translateEngToMorseCode("as easy as 123!")).toBe(
         ".- ... / . .- ... -.-- / .- ... / .---- ..--- ...-- -.-.--"
       );
     });
 
     test("Should be able to handle non string entries", () => {
-      expect(sampleTranslator.translateEngToMorseCode(6)).toBe("-....");
-      expect(sampleTranslator.translateEngToMorseCode(567432)).toBe(
+      expect(engToMCTranslator.translateEngToMorseCode(6)).toBe("-....");
+      expect(engToMCTranslator.translateEngToMorseCode(567432)).toBe(
         "..... -.... --... ....- ...-- ..---"
       );
+    });
+  });
+
+  describe("Morse code to english translator", () => {
+    const mcToEngTranslator = new classes.MorseCodeToEngTranslator(
+      morseCodeAlphabet
+    );
+    mcToEngTranslator.swapAlphabet();
+    test("Should be able to translate morse code to english", () => {
+      expect(mcToEngTranslator.translateMorseCodeToEng("... --- ...")).toBe(
+        "SOS"
+      );
+      expect(
+        mcToEngTranslator.translateMorseCodeToEng(
+          "- .... .. ... / .. ... / .-- --- .-. -.- .. -. --."
+        )
+      ).toBe("THIS IS WORKING");
+    });
+    test("Should return '#' if input doesn't match morse code symbol", () => {
+      expect(
+        mcToEngTranslator.translateMorseCodeToEng("--..--..--..--..--..")
+      ).toBe("#");
     });
   });
 });
