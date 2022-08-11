@@ -16,8 +16,8 @@ export class EngToMorseCodeTranslator {
       let outputArr = [];
       const strArr = String(str).split(this.splitStr);
       strArr.forEach((character) => {
-        this.alphabetArr.forEach((equivalent) => {
-          Object.entries(equivalent).forEach(([key, val]) => {
+        this.alphabetArr.forEach((alphabet) => {
+          Object.entries(alphabet).forEach(([key, val]) => {
             if (key.toUpperCase() === character.toUpperCase()) {
               outputArr.push(val.toString());
             }
@@ -44,12 +44,12 @@ export class MorseCodeToEngTranslator extends EngToMorseCodeTranslator {
   }
 
   swapAlphabet() {
-    this.alphabetArr = this.alphabetArr.map((equivalent) => {
+    this.alphabetArr = this.alphabetArr.map((alphabet) => {
       const swapKeysAndValues = (obj) => {
         const swapped = Object.entries(obj).map(([key, val]) => [val, key]);
         return Object.fromEntries(swapped);
       };
-      return swapKeysAndValues(equivalent);
+      return swapKeysAndValues(alphabet);
     });
   }
 
@@ -107,4 +107,4 @@ textBoxMorseCode.addEventListener("input", (event) => {
   mcToEngTranslator.getNewTranslationHTML(event, textBoxEnglish);
 });
 
-// Solve: only listens to one text area at a time. Once other is activated both stop
+// Solve: only listens to one text area at a time. Once other is activated both stop.
