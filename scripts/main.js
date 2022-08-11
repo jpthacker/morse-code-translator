@@ -29,6 +29,10 @@ export class EngToMorseCodeTranslator {
       return "You must enter a string or a number";
     }
   }
+
+  getTranslationHTML(event, textarea) {
+    textarea.innerHTML = this.translateEngToMorseCode(event.target.value);
+  }
 }
 
 // MORSE CODE TO ENGLISH TRANSLATOR CLASS
@@ -57,6 +61,22 @@ export class MorseCodeToEngTranslator extends EngToMorseCodeTranslator {
       return output;
     }
   }
+
+  getTextBoxLastItem(event) {
+    const textBoxArr = event.target.value.split(" ");
+    const cleanedTextBoxArr = textBoxArr.filter((item) => {
+      return item !== mcToEngTranslator.joinStr;
+    });
+    return cleanedTextBoxArr[cleanedTextBoxArr.length - 1];
+  }
+
+  getNewTranslationHTML(event, textarea) {
+    if (this.translateMorseCodeToEng(this.getTextBoxLastItem(event)) === "#") {
+      textarea.innerHTML = "#";
+    } else {
+      super.getTranslationHTML(event, textarea);
+    }
+  }
 }
 
 // MORSE CODE / ENG TRANSLATOR OBJECTS
@@ -67,36 +87,24 @@ const engToMCTranslator = new EngToMorseCodeTranslator(
 const mcToEngTranslator = new MorseCodeToEngTranslator(
   alphabet.morseCodeAlphabet
 );
+// Swap alphabets so that for second object key = morse code and val = eng
 mcToEngTranslator.swapAlphabet();
 
 // DOM INTERATION
-// Should be able to determine the content of two forms using event listeners and the two objects' methods
+// HTML elements
 const textBoxEnglish = document.querySelector(".translator__input--eng");
 const textBoxMorseCode = document.querySelector(
   ".translator__input--morse-code"
 );
 
-textBoxEnglish.addEventListener("keyup", (event) => {
-  textBoxMorseCode.innerText = engToMCTranslator.translateEngToMorseCode(
-    event.target.value
-  );
+// Event listener for translating eng to morse code
+textBoxEnglish.addEventListener("input", (event) => {
+  engToMCTranslator.getTranslationHTML(event, textBoxMorseCode);
 });
 
-textBoxMorseCode.addEventListener("keyup", (event) => {
-  const textBoxArr = event.target.value.split(" ");
-  const cleanedTextBoxArr = textBoxArr.filter((item) => {
-    return item !== mcToEngTranslator.joinStr;
-  });
-  const lastItem = cleanedTextBoxArr[cleanedTextBoxArr.length - 1];
-  if (mcToEngTranslator.translateMorseCodeToEng(lastItem) === "#") {
-    textBoxEnglish.innerText = "#";
-  } else {
-    textBoxEnglish.innerText += mcToEngTranslator.translateMorseCodeToEng(
-      event.target.value
-    );
-  }
+// Event listener for translating morse code to eng (displays '#' if single piece of code in sequence is untranslatable)
+textBoxMorseCode.addEventListener("input", (event) => {
+  mcToEngTranslator.getNewTranslationHTML(event, textBoxEnglish);
 });
 
-// Two issues
-// 1. Only listens to one text area at a time
-// 2. MC text area space/slash issues
+// Solve: only listens to one text area at a time. Once other is activated both stop
