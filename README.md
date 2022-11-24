@@ -12,7 +12,7 @@ The translator is case insensitive, thus “sos” should produce same output as
 
 ## Approach
 
-1. Following TDD principles, my first task was to write a series of tests for the two classes in the application, an English to Morse Code Translator class and a Morese Code to English Translator class, as well as their shared and respective methods.
+1. Following TDD principles, my first task was to write a series of tests for the two classes in the application, an English to Morse Code Translator class and a Morse Code to English Translator class, as well as their shared and respective methods.
 
 2. My next task was to make an 'EngToMorseCodeTranslator' class, which featured two methods necessary to translate English to Morse Code and return the result as HTML to display: translateEngToMorseCode(str) and getTranslationHTML(value).
 
@@ -32,7 +32,7 @@ swapAlphabet() {
 
 4. Further methods were required in this second class to provide error messages and instructions depending on the user's correct or incorrect code input and to handle spaces and specific Morse Code formatting.
 
-5. I then added two event listeners set up to detect user inputs to two seperate textareas via query selectors to ensure that when a user typed into a textarea, then the equivalent English or Morse Code was displayed in the other in real time (see gif above).
+5. I then added two event listeners set up to detect user inputs to two seperate textarea elements via query selectors to ensure that when a user typed into a textarea, the equivalent English or Morse Code was displayed in the other one in real time (see gif above).
 
 ## Technologies & Features:
 
