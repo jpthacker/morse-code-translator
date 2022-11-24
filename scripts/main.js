@@ -1,7 +1,4 @@
 import * as alphabet from "./alphabet.js";
-alphabet.morseCodeAlphabet;
-alphabet.englishAlphabet;
-alphabet.morseCodeAlphabetArr;
 
 // ENGLISH TO MORSE CODE TRANSLATOR CLASS
 export class EngToMorseCodeTranslator {
@@ -30,8 +27,10 @@ export class EngToMorseCodeTranslator {
     }
   }
 
-  getTranslationHTML(event, textarea) {
-    textarea.innerHTML = this.translateEngToMorseCode(event.target.value);
+  getTranslationHTML(value) {
+    const toTranslate = value;
+    console.log(toTranslate);
+    return this.translateEngToMorseCode(toTranslate);
   }
 }
 
@@ -62,19 +61,21 @@ export class MorseCodeToEngTranslator extends EngToMorseCodeTranslator {
     }
   }
 
-  getTextBoxLastItem(event) {
-    const textBoxArr = event.target.value.split(" ");
+  getTextBoxLastItem(value) {
+    const textBoxArr = value.split(" ");
     const cleanedTextBoxArr = textBoxArr.filter((item) => {
-      return item !== mcToEngTranslator.joinStr;
+      return item !== this.joinStr;
     });
     return cleanedTextBoxArr[cleanedTextBoxArr.length - 1];
   }
 
-  getNewTranslationHTML(event, textarea) {
-    if (this.translateMorseCodeToEng(this.getTextBoxLastItem(event)) === "#") {
-      textarea.innerHTML = "#";
+  getTranslationHTML(value) {
+    if (this.translateMorseCodeToEng(this.getTextBoxLastItem(value)) === "#") {
+      return "Please enter valid morse code. Seperate characters with a ' ' and use '/' to represent spaces between words.";
     } else {
-      super.getTranslationHTML(event, textarea);
+      const toTranslate = value;
+      console.log(toTranslate);
+      return this.translateEngToMorseCode(toTranslate);
     }
   }
 }
@@ -99,12 +100,21 @@ const textBoxMorseCode = document.querySelector(
 
 // Event listener for translating eng to morse code
 textBoxEnglish.addEventListener("input", (event) => {
-  engToMCTranslator.getTranslationHTML(event, textBoxMorseCode);
+  textBoxMorseCode.value = "";
+  textBoxMorseCode.value += engToMCTranslator.getTranslationHTML(
+    event.target.value
+  );
+  console.log("Fired1");
 });
 
-// Event listener for translating morse code to eng (displays '#' if single piece of code in sequence is untranslatable)
+// Event listener for translating morse code to eng (displays message if morse code character is untranslatable)
 textBoxMorseCode.addEventListener("input", (event) => {
-  mcToEngTranslator.getNewTranslationHTML(event, textBoxEnglish);
+  textBoxEnglish.value = "";
+  textBoxEnglish.value += mcToEngTranslator.getTranslationHTML(
+    event.target.value
+  );
+  console.log("Fired2");
 });
 
 // Solve: only listens to one text area at a time. Once other is activated both stop.
+// To do: seperate classes and DOM elements into different files
