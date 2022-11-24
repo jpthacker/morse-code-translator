@@ -116,5 +116,4 @@ textBoxMorseCode.addEventListener("input", (event) => {
   console.log("Fired2");
 });
 
-// Solve: only listens to one text area at a time. Once other is activated both stop.
 // To do: seperate classes and DOM elements into different files

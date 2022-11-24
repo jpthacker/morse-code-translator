@@ -47,5 +47,6 @@ swapAlphabet() {
 ## Further Developments:
 
 - Update styles
-- Add option to change input alphabet (i.e. French, Spanish, etc.)
+- Seperate classes and DOM elements into different files
+- Add option to change input alphabet
 - Alternatively, enable the input to be in any alphabet (i.e. include multiple alphabets in the library)
